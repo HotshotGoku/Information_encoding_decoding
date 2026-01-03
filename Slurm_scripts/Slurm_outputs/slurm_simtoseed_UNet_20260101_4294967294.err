@@ -1,0 +1,23 @@
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Set SLURM handle signals.
+
+  | Name       | Type       | Params
+------------------------------------------
+0 | encoder    | ModuleList | 1.2 M 
+1 | decoder    | ModuleList | 3.1 M 
+2 | pool       | MaxPool2d  | 0     
+3 | bottleneck | Sequential | 3.5 M 
+4 | final_conv | Conv2d     | 17    
+------------------------------------------
+7.8 M     Trainable params
+0         Non-trainable params
+7.8 M     Total params
+31.101    Total estimated model params size (MB)
+/hpc/dctrl/ks723/miniconda3/envs/pytorch_PA_patternprediction/lib/python3.10/site-packages/pytorch_lightning/trainer/data_loading.py:110: UserWarning: The dataloader, val_dataloader 0, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 11 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+/hpc/dctrl/ks723/miniconda3/envs/pytorch_PA_patternprediction/lib/python3.10/site-packages/pytorch_lightning/trainer/data_loading.py:110: UserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 11 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+slurmstepd: error: *** JOB 41225691 ON dcc-youlab-gpu-38 CANCELLED AT 2026-01-02T15:34:43 ***
