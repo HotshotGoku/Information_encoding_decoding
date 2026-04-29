@@ -1,3 +1,1 @@
-from .UNet import UNet
-
-__all__ = ['UNet']
+from .UNet_Resblocks import UNet_Resblocks
