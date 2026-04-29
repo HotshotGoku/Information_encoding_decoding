@@ -719,7 +719,7 @@ def preprocess_experimental(exp_path, top_crop=30, bottom_crop=30, left_crop=31,
 
     
 
-def preprocess_experimental_initialstage(img_path, img_length=256,img_width=256):
+def preprocess_experimental_initialstage(img_path, img_length=256,img_width=256, alpha = 1.5, beta = 50):
 
     """
     Preprocess single image in color from raw experimental data.
@@ -731,6 +731,11 @@ def preprocess_experimental_initialstage(img_path, img_length=256,img_width=256)
     """
 
     img = cv2.imread(img_path)
+
+    # resize the image first to ensure compatibility with previous images
+    img_width_original= 1001
+    img_length_original= 1001
+    img = cv2.resize (img, (img_width_original, img_length_original))
 
     # Convert the image to grayscale
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -763,8 +768,6 @@ def preprocess_experimental_initialstage(img_path, img_length=256,img_width=256)
 
 
             # Adjust contrast and brightness
-            alpha = 1.5  # Contrast control (1.0-3.0)
-            beta = 50    # Brightness control (0-100)
             adjusted_image = cv2.convertScaleAbs(img_masked, alpha=alpha, beta=beta)
 
             
@@ -792,7 +795,7 @@ def preprocess_experimental_initialstage(img_path, img_length=256,img_width=256)
         return None
 
 
-def preprocess_seed(seed_path,top_crop=0, bottom_crop=0, left_crop=0, right_crop=0, img_length= 256, img_width=256):
+def preprocess_seed(seed_path,top_crop=0, bottom_crop=0, left_crop=0, right_crop=0, img_length= 256, img_width=256, method=cv2.INTER_NEAREST):
     
     """
     Preprocess simulation input images in grayscale from raw simulation data.
@@ -821,6 +824,6 @@ def preprocess_seed(seed_path,top_crop=0, bottom_crop=0, left_crop=0, right_crop
     (T, new_array_i) = cv2.threshold(new_array_i, 0, 255,cv2.THRESH_BINARY| cv2.THRESH_OTSU)
 
     # resize 
-    new_array_i = cv2.resize(new_array_i, (img_width, img_length), interpolation=cv2.INTER_NEAREST)
+    new_array_i = cv2.resize(new_array_i, (img_width, img_length), interpolation=method)
 
     return new_array_i
