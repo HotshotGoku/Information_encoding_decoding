@@ -1,3 +1,12 @@
 /inference 
 /lightning_logs
+/extra
+/losses
+/Slurm_scripts/extra
+Misc_v2.ipynb
+plot_fig.ipynb
+/Slurm_scripts/Slurm_outputs
+/models/extra
+
+
 
