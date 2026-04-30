@@ -7,6 +7,7 @@ Misc_v2.ipynb
 plot_fig.ipynb
 /Slurm_scripts/Slurm_outputs
 /models/extra
+/__pycache__
 
 
 
