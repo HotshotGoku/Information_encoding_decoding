@@ -8,6 +8,11 @@ plot_fig.ipynb
 /Slurm_scripts/Slurm_outputs
 /models/extra
 /__pycache__
+/utils/__pycache__
+/models/__pycache__
+/Slurm_scripts/check_usage_gpu.sh
+
+
 
 
 
