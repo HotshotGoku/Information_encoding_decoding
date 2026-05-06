@@ -8,13 +8,14 @@ import cv2
 from natsort import natsorted
 
 
-from utils.config import SPECIFIC_FOLDER_EXP_DIFFUSION_ROTATED, SPECIFIC_FOLDER_SEED
-source_folder= SPECIFIC_FOLDER_EXP_DIFFUSION_ROTATED
-target_folder= SPECIFIC_FOLDER_SEED
+from utils.config import SPECIFIC_FOLDER_EXP_DIFFUSION_MORE, SPECIFIC_FOLDER_SEED_DIFFUSION_MORE
+
+source_folder= SPECIFIC_FOLDER_EXP_DIFFUSION_MORE
+target_folder= SPECIFIC_FOLDER_SEED_DIFFUSION_MORE
 
 
 class MyDataset(Dataset):
-    def __init__(self, source_folder:str=SPECIFIC_FOLDER_EXP_DIFFUSION_ROTATED, target_folder:str=SPECIFIC_FOLDER_SEED, start:int=0,end:int=None, use_vae=False, preprocess_method=cv2.INTER_NEAREST,preprocess_input="backgroundwhite"):
+    def __init__(self, source_folder:str=SPECIFIC_FOLDER_EXP_DIFFUSION_MORE, target_folder:str=SPECIFIC_FOLDER_SEED_DIFFUSION_MORE, start:int=0,end:int=None, use_vae=False, preprocess_method=cv2.INTER_NEAREST,preprocess_input="backgroundwhite"):
         # Store full paths to avoid repeated path joining
         # choose the first N files for consistency
         if end is None:

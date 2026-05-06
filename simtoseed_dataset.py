@@ -1,15 +1,15 @@
-from utils.config import SEED_FOLDER_SEEDTOSIM, SIM_FOLDER_SEEDTOSIM
+from utils.config import SIM_FOLDER_TEST_INFOENCODING_MORESEEDS_3ROTREPS, SEED_FOLDER_TEST_INFOENCODING_MORESEEDS_3ROTREPS
 from torch.utils.data import Dataset
 import os
 import numpy as np
 import torch
 from utils.preprocess import preprocess_simulation_graybackground, preprocess_seed
 
-source_folder= SIM_FOLDER_SEEDTOSIM
-target_folder= SEED_FOLDER_SEEDTOSIM
+source_folder= SIM_FOLDER_TEST_INFOENCODING_MORESEEDS_3ROTREPS
+target_folder= SEED_FOLDER_TEST_INFOENCODING_MORESEEDS_3ROTREPS
 
 class MyDataset(Dataset):
-    def __init__(self, source_folder:str=SIM_FOLDER_SEEDTOSIM, target_folder:str=SEED_FOLDER_SEEDTOSIM, start:int=0,end:int=30000, use_vae=False, preprocess_seed_output= True):
+    def __init__(self, source_folder:str=SIM_FOLDER_TEST_INFOENCODING_MORESEEDS_3ROTREPS, target_folder:str=SEED_FOLDER_TEST_INFOENCODING_MORESEEDS_3ROTREPS, start:int=0,end:int=30000, use_vae=False, preprocess_seed_output= True):
         # Store full paths to avoid repeated path joining
         # choose the first N files for consistency
         self.use_vae= use_vae
