@@ -26,33 +26,23 @@ pos_weight = torch.tensor([pos_weight_value])
 name = "Res_UNet_sim_vae_nonrandom"
 version = f"lambda{lambda_}_pos{pos_weight_value}_GPUsv3RotReps"
 model=UNet_Resblocks(in_channels=4, use_vae=True, features=[16,32,64], learning_rate=learning_rate, lambda_=lambda_, pos_weight=pos_weight, dropout=dropout, weight_decay=weight_decay)
-# model=LatentToIC(use_vae=True, learning_rate=learning_rate)
-# model = PDEArenaDilatedResNet(use_vae=True, learning_rate=learning_rate)
-# Misc  
-# dataset = MyDataset(use_vae=True, target_folder=SPECIFIC_FOLDER_SEED_DIFFUSION, preprocess_input= 'None')
-# dataset = MyDataset(use_vae=True, source_folder=SPECIFIC_FOLDER_EXP_DIFFUSION_ROTATED, target_folder=SPECIFIC_FOLDER_SEED, preprocess_input= 'None')
-dataset = MyDataset(use_vae=True, source_folder=SIM_FOLDER_TEST_INFOENCODING_MORESEEDS_3ROTREPS, target_folder=SEED_FOLDER_TEST_INFOENCODING_MORESEEDS_3ROTREPS, preprocess_seed_output=False, start=0, end= 90000)
 
-# Fix split to avoid augmentation leakage
-# 409 base images × 100 augmentations = 40,900 total
-# Take 41 base images for validation (clean 4,100 images)
+dataset = MyDataset(use_vae=True, source_folder=SIM_FOLDER_TEST_INFOENCODING_MORESEEDS_3ROTREPS, target_folder=SEED_FOLDER_TEST_INFOENCODING_MORESEEDS_3ROTREPS, preprocess_seed_output=False, start=0, end= 90000)
 
 
 # Now we have 30k images * 3 augs per image=90 k total
 # 9000 images for validation, 81k for training
-n_total= 30000  #409
-n_augmentations_per_image =  3  #100
-n_val_base_images = 3000     #41
-n_train = (n_total - n_val_base_images) * n_augmentations_per_image  # 81k   # 36,800
-n_val = n_val_base_images * n_augmentations_per_image # 9k # 4,100
+n_total= 30000  
+n_augmentations_per_image =  3  
+n_val_base_images = 3000     
+n_train = (n_total - n_val_base_images) * n_augmentations_per_image  # 81k   
+n_val = n_val_base_images * n_augmentations_per_image # 9k 
 
 # make non random splits to prevent data leakage from augmentation versions
 train_indices= list(range(0, n_train))
 val_indices= list(range(n_train, n_train+n_val))
 
 train_ds,val_ds= torch.utils.data.Subset(dataset, train_indices), torch.utils.data.Subset(dataset, val_indices)
-
-# train_ds, val_ds= random_split(dataset, [n_train, n_val], generator= torch.Generator().manual_seed(42))
 
 num_gpus = 4
 num_workers = max(1, (os.cpu_count() or 1) // num_gpus)  # CPUs per DDP process
