@@ -4,8 +4,6 @@ from torch.utils.data import DataLoader, random_split
 from pytorch_lightning.loggers import TensorBoardLogger, CSVLogger
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping, LearningRateMonitor
 from models import UNet_Resblocks
-# from models.ResNet_old import LatentToIC
-# from models.ResNet_dilated import PDEArenaDilatedResNet
 from simtoseed_dataset import MyDataset
 import os
 
