@@ -11,6 +11,7 @@ plot_fig.ipynb
 /utils/__pycache__
 /models/__pycache__
 /Slurm_scripts/check_usage_gpu.sh
+/utils/config_extra.py
 
 
 
