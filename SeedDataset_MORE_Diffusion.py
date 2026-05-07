@@ -4,13 +4,13 @@ import os
 import cv2
 import glob
 
-from utils.config import SEED_FOLDER_TEST_INFOENCODING_MORESEEDS, SEED_FOLDER_TEST_INFOENCODING_MORESEEDS_EXTRAREPLICATES
+from utils.config import SEED_FOLDER_TEST_INFOENCODING_MORESEEDS, SPECIFIC_FOLDER_SEED_DIFFUSION_MORE
 from utils.preprocess import preprocess_seed
 
 # Load the sorted files from the seed folder
 
 SEED_DIR= SEED_FOLDER_TEST_INFOENCODING_MORESEEDS
-OUTPUT_DIR= SEED_FOLDER_TEST_INFOENCODING_MORESEEDS_EXTRAREPLICATES
+OUTPUT_DIR= SPECIFIC_FOLDER_SEED_DIFFUSION_MORE
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 seed_files= sorted(glob.glob(os.path.join(SEED_DIR, "*.png")))[:30000]
