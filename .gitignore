@@ -1,7 +1,6 @@
 /inference 
 /lightning_logs
 /extra
-/losses
 /Slurm_scripts/extra
 Misc_v2.ipynb
 plot_fig.ipynb
@@ -12,6 +11,7 @@ plot_fig.ipynb
 /models/__pycache__
 /Slurm_scripts/check_usage_gpu.sh
 /utils/config_extra.py
+
 
 
 
